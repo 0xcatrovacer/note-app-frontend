@@ -14,6 +14,11 @@ const Home = () => {
         content: 'Task 2',
         completed: true,
         createdAt: 'daybefore'
+    },
+    {
+        content: 'Task 3',
+        completed: true,
+        createdAt: 'daybefore'
     }
     ]
 

@@ -4,7 +4,7 @@
   color: rgb(255, 217, 0);
   /* color: rgb(96, 197, 255); */
   padding: 150px 300px;
-  padding-top: 150px;
+  padding-top: 250px;
 }
 
 .HomeNotes {
@@ -26,17 +26,16 @@
 }
 
 .DelIcon {
+  padding: 0;
   margin-right: 40px;
   cursor: pointer;
   display: flex;
   align-items: center;
+  transition: all 0.3s;
 }
 
 .DelIcon:hover {
-  background: rgb(61, 61, 61);
-  border: none;
-  border-radius: 20px;
-  box-shadow: 1px 1px 20px rgb(32, 32, 32);
+  color: rgba(43, 43, 43);
 }
 
 .Note:hover {

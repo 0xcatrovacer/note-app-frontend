@@ -9,7 +9,6 @@ const Navbar = () => {
             </div>
             <div className="NavRouters">
                 <span className="routes">Dashboard</span>
-                <span className="routes">About</span>
             </div>
             <button className="CreateNote">Sign In</button>
         </div>
