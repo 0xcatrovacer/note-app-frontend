@@ -25,6 +25,10 @@
   justify-content: space-between;
 }
 
+.NoteContent {
+  cursor: default;
+}
+
 .DelIcon {
   padding: 0;
   margin-right: 40px;
@@ -58,7 +62,7 @@
   cursor: pointer;
   transition: all 0.4s;
   position: fixed;
-  right: 18px;
+  right: 35px;
   bottom: 130px;
 }
 
