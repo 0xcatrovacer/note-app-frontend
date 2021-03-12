@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Home.css'
 
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -25,7 +26,9 @@ const Home = () => {
     return (
         <div className="Home">
             <h1 class='HomeNotes'>Notes</h1>
-            <button className="AddBtn">+</button>
+
+            <Link to='/create'><button className="AddBtn">+</button></Link>
+
             <div className="NoteList">
                 {notes.map((note) => (
                     <div className="Note">
