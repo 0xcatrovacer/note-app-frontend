@@ -4,11 +4,43 @@
   color: rgb(255, 217, 0);
   /* color: rgb(96, 197, 255); */
   padding: 150px 300px;
+  padding-top: 150px;
 }
 
 .HomeNotes {
   font-weight: lighter;
   cursor: default;
+}
+
+.NoteList {
+  padding-top: 50px;
+}
+
+.Note {
+  padding: 70px 0px;
+  padding-left: 40px;
+  font-size: 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.DelIcon {
+  margin-right: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.DelIcon:hover {
+  background: rgb(61, 61, 61);
+  border: none;
+  border-radius: 20px;
+  box-shadow: 1px 1px 20px rgb(32, 32, 32);
+}
+
+.Note:hover {
+  box-shadow: 1px 1px 20px rgb(32, 32, 32);
 }
 
 .AddBtn {
@@ -37,4 +69,5 @@
   /* color: rgb(96, 197, 255); */
   border: 2px solid rgb(255, 217, 0);
   /* border: 2px solid rgb(96, 197, 255); */
+  box-shadow: 1px 1px 20px rgb(32, 32, 32);
 }
