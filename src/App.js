@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import './App.css';
+import CreateNote from './components/CreateNote/CreateNote';
 
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
@@ -20,6 +21,7 @@ function App() {
 
           <Route path='/create'>
             <Navbar />
+            <CreateNote />
             <Footer />
           </Route>
 
