@@ -6,6 +6,7 @@ import CreateNote from './components/CreateNote/CreateNote';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
+import Signin from './components/SignIn/Signin';
 
 
 function App() {
@@ -22,6 +23,11 @@ function App() {
           <Route path='/create'>
             <Navbar />
             <CreateNote />
+            <Footer />
+          </Route>
+
+          <Route path='/signin'>
+            <Signin />
             <Footer />
           </Route>
 
