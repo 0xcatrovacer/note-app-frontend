@@ -26,7 +26,9 @@ const Signin = () => {
             localStorage.setItem('token', res.data.token)
             history.push('/')
         }).catch((err) => {
-            console.log(err)
+            alert('Authentication failed')
+            setUsername('')
+            setPassword('')
         })
     }
 
