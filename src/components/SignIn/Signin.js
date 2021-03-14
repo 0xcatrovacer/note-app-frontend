@@ -34,7 +34,26 @@ const Signin = () => {
 
     const handleRegister = (e) => {
         e.preventDefault();
-        console.log('hello')
+
+        const user = { username, password }
+
+        axios({
+            method: 'POST',
+            url: 'http://localhost:8000/users/',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            data: user
+        }).then((res) => {
+            console.log('New User created')
+            localStorage.setItem('token', res.data.token)
+            history.push('/')
+        }).catch((err) => {
+            alert(err)
+            setUsername('')
+            setPassword('')
+        })
+
     }
 
     return (

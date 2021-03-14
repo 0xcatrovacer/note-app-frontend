@@ -8,7 +8,7 @@ const Navbar = () => {
 
     const history = useHistory();
 
-    const handleSignOut = (e) => {
+    const handleSignOut = () => {
 
         const token = localStorage.getItem('token')
 
@@ -20,6 +20,7 @@ const Navbar = () => {
             }
         }).then(() => {
             history.push('/signin')
+            localStorage.setItem('token', false)
         })
     }
 
