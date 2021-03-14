@@ -23,7 +23,6 @@ function App() {
               <Home />
               <Footer />
             </div> : <Redirect to="/signin" />}
-
           </Route>
 
           <Route path='/create'>

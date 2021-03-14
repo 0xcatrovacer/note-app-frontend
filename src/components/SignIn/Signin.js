@@ -25,6 +25,7 @@ const Signin = () => {
             console.log('User logged in')
             localStorage.setItem('token', res.data.token)
             history.push('/')
+
         }).catch((err) => {
             alert('Authentication failed')
             setUsername('')
@@ -86,7 +87,7 @@ const Signin = () => {
                     </div>
                     <div className="FormBtns">
                         <button className="Btns" onClick={handleSignin} >Sign In</button>
-                        <button className="Btns" onClick={handleRegister} > Create Account </button>
+                        <button className="Btns registerBtn" onClick={handleRegister} > Create Account </button>
                     </div>
                 </form>
             </div>

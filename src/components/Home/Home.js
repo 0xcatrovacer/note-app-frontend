@@ -35,8 +35,6 @@ const Home = () => {
             headers: { 'Authorization': `Bearer ${token}` },
         });
 
-        // console.log(notes.data)
-
         try {
             setNotes(notes.data);
         } catch (err) {

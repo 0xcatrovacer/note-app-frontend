@@ -36,7 +36,10 @@ const Navbar = () => {
                     <span className="routes">Dashboard</span>
                 </Link>
             </div>
-            <button className="CreateNote" onClick={handleSignOut} >Sign Out</button>
+            <div className="NavBtns">
+                <button className="CreateNote" onClick={handleSignOut} >Sign Out</button>
+                <button className="CreateNote DelAccountBtn">Delete Account</button>
+            </div>
         </div>
     )
 }
