@@ -24,6 +24,22 @@ const Navbar = () => {
         })
     }
 
+    const handleDeleteAcc = () => {
+        const token = localStorage.getItem('token')
+
+        axios({
+            url: 'http://localhost:8000/users/delete',
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).then(() => {
+            console.log('User Account deleted')
+            localStorage.setItem('token', '')
+            history.push('/signin')
+        })
+    }
+
     return (
         <div className="Navbar">
             <div className="NavTitle">
@@ -38,7 +54,7 @@ const Navbar = () => {
             </div>
             <div className="NavBtns">
                 <button className="CreateNote" onClick={handleSignOut} >Sign Out</button>
-                <button className="CreateNote DelAccountBtn">Delete Account</button>
+                <button className="CreateNote DelAccountBtn" onClick={handleDeleteAcc} >Delete Account</button>
             </div>
         </div>
     )
