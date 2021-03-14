@@ -9,29 +9,51 @@ const Home = () => {
 
     const [noteList, setNotes] = useState(null);
 
+
     useEffect(async () => {
-        const notes = await (axios.get('http://localhost:8000/notes')).data
+
+        const token = localStorage.getItem('token')
+
+        const notes = await axios.get('http://localhost:8000/notes', {
+            headers: { 'Authorization': `Bearer ${token}` },
+        });
+
+        console.log(notes.data)
+
         try {
-            setNotes(notes);
+            setNotes(notes.data);
         } catch (err) {
             console.log(err.message)
         }
-    })
+    }, [])
 
     useEffect(async () => {
 
-        const notes = await (axios.get('http://localhost:8000/notes')).data
+        const token = localStorage.getItem('token')
+
+        const notes = await axios.get('http://localhost:8000/notes', {
+            headers: { 'Authorization': `Bearer ${token}` },
+        });
+
+        // console.log(notes.data)
 
         try {
-            setNotes(notes);
+            setNotes(notes.data);
         } catch (err) {
             console.log(err.message);
         }
     }, [noteList, setNotes]);
 
     const handleDelete = (id) => {
-        fetch('http://localhost:8000/notes/' + id, {
-            method: "DELETE"
+
+        const token = localStorage.getItem('token')
+
+        axios({
+            url: 'http://localhost:8000/notes/' + id,
+            method: "DELETE",
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
         })
             .then(() => {
                 setNotes(
@@ -44,7 +66,7 @@ const Home = () => {
 
     return (
         <div className="Home">
-            <h1 class='HomeNotes'>Notes</h1>
+            <h1 className='HomeNotes'>Notes</h1>
 
             <Link to='/create'><button className="AddBtn">+</button></Link>
 

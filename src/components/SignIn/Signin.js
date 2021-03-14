@@ -1,7 +1,40 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router'
 import './Signin.css'
 
 const Signin = () => {
+
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+
+    const history = useHistory()
+
+    const handleSignin = (e) => {
+        e.preventDefault();
+        const user = { username, password }
+
+        axios({
+            method: 'POST',
+            url: 'http://localhost:8000/users/login',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            data: user
+        }).then((res) => {
+            console.log('User logged in')
+            localStorage.setItem('token', res.data.token)
+            history.push('/')
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+
+    const handleRegister = (e) => {
+        e.preventDefault();
+        console.log('hello')
+    }
+
     return (
         <div className="Signin">
             <h1 className="SigninHead">Noter</h1>
@@ -10,15 +43,29 @@ const Signin = () => {
                     <div className="FormUsername">
                         <span className="FormLabel">Username</span>
                         <input type="text"
-                            className="FormInput" required />
+                            className="FormInput"
+                            required
+                            value={username}
+                            onChange={(e) => {
+                                setUsername(e.target.value)
+                            }}
+                        />
                     </div>
                     <div className="FormPassword">
                         <span className="FormLabel">Password</span>
-                        <input type="password" className="FormInput" />
+                        <input
+                            type="password"
+                            className="FormInput"
+                            required
+                            value={password}
+                            onChange={(e) => {
+                                setPassword(e.target.value)
+                            }}
+                        />
                     </div>
                     <div className="FormBtns">
-                        <button className="Btns">Sign In</button>
-                        <button className="Btns"> Create Account </button>
+                        <button className="Btns" onClick={handleSignin} >Sign In</button>
+                        <button className="Btns" onClick={handleRegister} > Create Account </button>
                     </div>
                 </form>
             </div>

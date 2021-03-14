@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import { useHistory } from 'react-router';
 import './CreateNote.css'
@@ -7,16 +8,20 @@ const CreateNote = () => {
     const [content, setContent] = useState('');
     const history = useHistory();
 
+    const token = localStorage.getItem('token');
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const note = { content }
 
-        fetch('http://localhost:8000/notes', {
+        axios({
             method: 'POST',
+            url: 'http://localhost:8000/notes',
             headers: {
                 "Content-Type": "application/json",
+                'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify(note)
+            data: note
         }).then(() => {
             console.log('New Note Added')
             history.push('/');

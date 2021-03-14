@@ -5,7 +5,7 @@ import './Navbar.css'
 
 const Navbar = () => {
     return (
-        <div class="Navbar">
+        <div className="Navbar">
             <div className="NavTitle">
                 <Link className="NavTitle" to='/'>
                     <h1 className="Titletext">Noter</h1>
