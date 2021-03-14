@@ -1,9 +1,28 @@
+import axios from 'axios'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import './Navbar.css'
 
 const Navbar = () => {
+
+    const history = useHistory();
+
+    const handleSignOut = (e) => {
+
+        const token = localStorage.getItem('token')
+
+        axios({
+            url: 'http://localhost:8000/users/logout',
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).then(() => {
+            history.push('/signin')
+        })
+    }
+
     return (
         <div className="Navbar">
             <div className="NavTitle">
@@ -16,7 +35,7 @@ const Navbar = () => {
                     <span className="routes">Dashboard</span>
                 </Link>
             </div>
-            <button className="CreateNote">Sign Out</button>
+            <button className="CreateNote" onClick={handleSignOut} >Sign Out</button>
         </div>
     )
 }
