@@ -20,7 +20,7 @@ const Navbar = () => {
             }
         }).then(() => {
             history.push('/signin')
-            localStorage.setItem('token', false)
+            localStorage.setItem('token', '')
         })
     }
 

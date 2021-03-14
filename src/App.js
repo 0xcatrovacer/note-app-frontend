@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
 import './App.css';
 import CreateNote from './components/CreateNote/CreateNote';
@@ -10,14 +10,20 @@ import Signin from './components/SignIn/Signin';
 
 
 function App() {
+
+  const token = localStorage.getItem('token')
+
   return (
     <div className="App">
       <Router>
         <Switch>
           <Route exact path='/'>
-            <Navbar />
-            <Home />
-            <Footer />
+            {token ? <div>
+              <Navbar />
+              <Home />
+              <Footer />
+            </div> : <Redirect to="/signin" />}
+
           </Route>
 
           <Route path='/create'>
