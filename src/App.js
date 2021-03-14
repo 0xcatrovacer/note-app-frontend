@@ -17,22 +17,23 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
+
           <Route exact path='/'>
-            {token ? <div>
+            <Signin />
+            <Footer />
+          </Route>
+
+          <Route path='/dashboard'>
+            <div>
               <Navbar />
               <Home />
               <Footer />
-            </div> : <Redirect to="/signin" />}
+            </div>
           </Route>
 
           <Route path='/create'>
             <Navbar />
             <CreateNote />
-            <Footer />
-          </Route>
-
-          <Route path='/signin'>
-            <Signin />
             <Footer />
           </Route>
 

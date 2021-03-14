@@ -18,9 +18,12 @@ const Navbar = () => {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
-        }).then(() => {
-            history.push('/signin')
-            localStorage.setItem('token', '')
+        }).then(async () => {
+            const isTokenExists = await localStorage.getItem('token');
+            if (isTokenExists) {
+                localStorage.removeItem('token');
+                history.push('/');
+            }
         })
     }
 
@@ -35,20 +38,20 @@ const Navbar = () => {
             }
         }).then(() => {
             console.log('User Account deleted')
-            localStorage.setItem('token', '')
-            history.push('/signin')
+            localStorage.removeItem('token')
+            history.push('/')
         })
     }
 
     return (
         <div className="Navbar">
             <div className="NavTitle">
-                <Link className="NavTitle" to='/'>
+                <Link className="NavTitle" to='/dashboard'>
                     <h1 className="Titletext">Noter</h1>
                 </Link>
             </div>
             <div className="NavRouters">
-                <Link className="NavRouters routes" to='/'>
+                <Link className="NavRouters routes" to='/dashboard'>
                     <span className="routes">Dashboard</span>
                 </Link>
             </div>

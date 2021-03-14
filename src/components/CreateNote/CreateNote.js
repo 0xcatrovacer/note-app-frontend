@@ -24,7 +24,7 @@ const CreateNote = () => {
             data: note
         }).then(() => {
             console.log('New Note Added')
-            history.push('/');
+            history.push('/dashboard');
         })
     }
 

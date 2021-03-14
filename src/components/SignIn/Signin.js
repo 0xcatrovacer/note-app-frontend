@@ -23,8 +23,9 @@ const Signin = () => {
             data: user
         }).then((res) => {
             console.log('User logged in')
-            localStorage.setItem('token', res.data.token)
-            history.push('/')
+            const token = res.data.token
+            localStorage.setItem('token', token)
+            history.push('/dashboard')
 
         }).catch((err) => {
             alert('Authentication failed')
@@ -48,7 +49,7 @@ const Signin = () => {
         }).then((res) => {
             console.log('New User created')
             localStorage.setItem('token', res.data.token)
-            history.push('/')
+            history.push('/dashboard')
         }).catch((err) => {
             alert(err)
             setUsername('')
