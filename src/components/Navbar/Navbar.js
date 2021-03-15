@@ -13,7 +13,7 @@ const Navbar = () => {
         const token = localStorage.getItem('token')
 
         axios({
-            url: 'http://localhost:8000/users/logout',
+            url: `${process.env.REACT_APP_NOTERAPP_BACKEND}/users/logout`,
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -31,7 +31,7 @@ const Navbar = () => {
         const token = localStorage.getItem('token')
 
         axios({
-            url: 'http://localhost:8000/users/delete',
+            url: `${process.env.REACT_APP_NOTERAPP_BACKEND}/users/delete`,
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`

@@ -16,7 +16,7 @@ const CreateNote = () => {
 
         axios({
             method: 'POST',
-            url: 'http://localhost:8000/notes',
+            url: `${process.env.REACT_APP_NOTERAPP_BACKEND}/notes`,
             headers: {
                 "Content-Type": "application/json",
                 'Authorization': `Bearer ${token}`

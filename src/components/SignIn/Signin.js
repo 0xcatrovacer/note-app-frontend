@@ -16,7 +16,7 @@ const Signin = () => {
 
         axios({
             method: 'POST',
-            url: 'http://localhost:8000/users/login',
+            url: `${process.env.REACT_APP_NOTERAPP_BACKEND}/users/login`,
             headers: {
                 "Content-Type": "application/json",
             },
@@ -41,7 +41,7 @@ const Signin = () => {
 
         axios({
             method: 'POST',
-            url: 'http://localhost:8000/users/',
+            url: `${process.env.REACT_APP_NOTERAPP_BACKEND}/users/`,
             headers: {
                 "Content-Type": "application/json",
             },

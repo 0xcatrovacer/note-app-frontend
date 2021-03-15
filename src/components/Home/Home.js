@@ -14,7 +14,7 @@ const Home = () => {
 
         const token = localStorage.getItem('token')
 
-        const notes = await axios.get('http://localhost:8000/notes', {
+        const notes = await axios.get(`${process.env.REACT_APP_NOTERAPP_BACKEND}/notes`, {
             headers: { 'Authorization': `Bearer ${token}` },
         });
 
@@ -31,7 +31,7 @@ const Home = () => {
 
         const token = localStorage.getItem('token')
 
-        const notes = await axios.get('http://localhost:8000/notes', {
+        const notes = await axios.get(`${process.env.REACT_APP_NOTERAPP_BACKEND}/notes`, {
             headers: { 'Authorization': `Bearer ${token}` },
         });
 
@@ -47,7 +47,7 @@ const Home = () => {
         const token = localStorage.getItem('token')
 
         axios({
-            url: 'http://localhost:8000/notes/' + id,
+            url: `${process.env.REACT_APP_NOTERAPP_BACKEND}/notes/` + id,
             method: "DELETE",
             headers: {
                 'Authorization': `Bearer ${token}`
