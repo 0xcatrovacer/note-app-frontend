@@ -25,7 +25,7 @@ const DeleteTask = () => {
     })
 
 
-    const handleDelete = () => {
+    const handleYesDelete = () => {
         axios({
             url: `${process.env.REACT_APP_NOTERAPP_BACKEND}/notes/${id}`,
 
@@ -39,13 +39,17 @@ const DeleteTask = () => {
             )
     }
 
+    const handleNoDelete = () => {
+        history.push('/dashboard')
+    }
+
 
     return (
         <div className="DeleteTask">
             <h2>Are you sure you want to delete this note?</h2>
             <div>{noteE}</div>
-            <button>No</button>
-            <button onClick={handleDelete}>Yes</button>
+            <button onClick={handleNoDelete}>No</button>
+            <button onClick={handleYesDelete}>Yes</button>
 
         </div>
     )
