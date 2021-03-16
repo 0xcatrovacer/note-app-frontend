@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useHistory, useParams } from 'react-router'
 
+import './DeleteTask.css'
+
 const DeleteTask = () => {
 
     const [noteE, setNote] = useState('')
@@ -46,10 +48,12 @@ const DeleteTask = () => {
 
     return (
         <div className="DeleteTask">
-            <h2>Are you sure you want to delete this note?</h2>
-            <div>{noteE}</div>
-            <button onClick={handleNoDelete}>No</button>
-            <button onClick={handleYesDelete}>Yes</button>
+            <h2 className='DelQuestion'>Are you sure you want to delete this note?</h2>
+            <div className="DelNoteContent">{noteE}</div>
+            <div className="DeleteBtns">
+                <button onClick={handleNoDelete} className="NoDeleteButton DeleteButton">No</button>
+                <button onClick={handleYesDelete} className="YesDeleteButton DeleteButton">Yes</button>
+            </div>
 
         </div>
     )
