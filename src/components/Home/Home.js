@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import './Home.css'
 import axios from 'axios';
 
@@ -9,58 +9,35 @@ const Home = () => {
 
     const [noteList, setNotes] = useState(null);
 
+    const history = useHistory();
 
-    useEffect(async () => {
+    const callFn = () => {
 
         const token = localStorage.getItem('token')
 
-        const notes = await axios.get(`${process.env.REACT_APP_NOTERAPP_BACKEND}/notes`, {
+        axios.get(`${process.env.REACT_APP_NOTERAPP_BACKEND}/notes`, {
             headers: { 'Authorization': `Bearer ${token}` },
-        });
-
-        console.log(notes.data)
-
-        try {
-            setNotes(notes.data);
-        } catch (err) {
-            console.log(err.message)
-        }
-    }, [])
-
-    useEffect(async () => {
-
-        const token = localStorage.getItem('token')
-
-        const notes = await axios.get(`${process.env.REACT_APP_NOTERAPP_BACKEND}/notes`, {
-            headers: { 'Authorization': `Bearer ${token}` },
-        });
-
-        try {
-            setNotes(notes.data);
-        } catch (err) {
-            console.log(err.message);
-        }
-    }, [noteList, setNotes]);
-
-    const handleDelete = (id) => {
-
-        const token = localStorage.getItem('token')
-
-        axios({
-            url: `${process.env.REACT_APP_NOTERAPP_BACKEND}/notes/` + id,
-            method: "DELETE",
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
+        }).then((res) => {
+            setNotes(res.data)
         })
-            .then(() => {
-                setNotes(
-                    noteList.map((note) => {
-                        return note._id !== id;
-                    })
-                )
+            .catch((err) => {
+                console.log(err.message)
             })
     }
+
+
+    useEffect(() => {
+
+        callFn()
+    }
+        , [])
+
+    useEffect(() => {
+
+        callFn()
+    }
+        , [setNotes]);
+
 
     return (
         <div className="Home">
@@ -74,9 +51,8 @@ const Home = () => {
                 {noteList && <div> {noteList.map((note) => (
                     <div className="Note">
                         <div className="NoteContent">{note.content}</div>
-                        <span className="DelIcon" onClick={() => {
-                            handleDelete(note._id)
-                        }} ><DeleteIcon /></span>
+                        <Link to={`/deletetask/${note._id}`}>
+                            <span className="DelIcon"><DeleteIcon /></span></Link>
                     </div>
                 ))} </div>}
             </div>
@@ -85,3 +61,6 @@ const Home = () => {
 }
 
 export default Home
+
+
+

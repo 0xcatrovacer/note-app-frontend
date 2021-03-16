@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 
 import './App.css';
 import CreateNote from './components/CreateNote/CreateNote';
+import DeleteTask from './components/DeleteTask/DeleteTask';
 
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
@@ -34,6 +35,12 @@ function App() {
           <Route path='/create'>
             <Navbar />
             <CreateNote />
+            <Footer />
+          </Route>
+
+          <Route path='/deletetask/:id'>
+            <Navbar />
+            <DeleteTask />
             <Footer />
           </Route>
 
